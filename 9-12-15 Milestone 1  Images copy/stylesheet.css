@@ -1,0 +1,129 @@
+*{
+  outline: green dashed 1px;
+  padding: 0;
+}
+/*The main body of the Webpage*/
+body{
+  background-color: #FAFFFF;
+  width: auto;
+}
+/*Main header of the Webpage*/
+h1{
+  text-align: center;
+  font-size: 45px;
+  color: black;
+}
+
+div.navbarbackground{
+  background-color: #828282;
+  position: fixed;
+  width: 150%;
+  height: 50px;
+  margin-left: -10%;
+  margin-right: -20%;
+  top: 0px;
+  z-index: 90;
+}
+
+div.later img{
+  width: 110px;
+  height: 100px;
+  left: 10px;
+  top: -25px;
+  position: fixed;
+  z-index: 100;
+}
+
+div.homeButton img{
+   height: 30px;
+   width: 30px;
+   right: 160px;
+   top: 10px;
+   position: fixed;
+   z-index: 100;
+}
+
+div.magnifyingGlass img{
+  height: 30px;
+  width: 30px;
+  right: 70px;
+  top: 10px;
+  position: fixed;
+  z-index: 100;
+}
+
+div.profile img{
+  height: 30px;
+  width: 30px;
+  right: 115px;
+  top: 10px;
+  position: fixed;
+  z-index: 100;
+}
+
+div.settings img{
+  height: 30px;
+  width: 30px;
+  right: 25px;
+  top: 10px;
+  position: fixed;
+  z-index: 100;
+}
+
+div.settingPulldown img{
+  width: 250px;
+  height: auto;
+  top: 50px;
+  position: relative;
+  float: right;
+  right: -0%;
+  position: fixed;
+  z-index: 95;
+}
+
+div ul{
+  position: fixed;
+  top: 30px;
+  right: 0px;
+  z-index: 100;
+  list-style-type: none;
+
+}
+div ul li {
+  padding: 8px 45px 15px 0px;
+  font-family: Helvetica,Arial;
+  color: white;
+  font-size: 25px;
+}
+
+div ul li a{
+  text-decoration: none;
+  list-style: none;
+}
+
+div ul li a:visited{
+  text-decoration: none;
+  color: white;
+}
+
+div ul li a:hover{
+  color: black;
+}
+
+div.header{
+}
+
+/*We can put an image of website here, 750X90 px*/
+
+
+/*color and shape of the header which is currently red*/
+#title{
+  position: relative;
+  top: 20px;
+}
+
+.search{
+  position: relative;
+  top: 50px;
+  z-index: 100;
+}
