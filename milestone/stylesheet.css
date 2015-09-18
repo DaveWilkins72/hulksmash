@@ -8,7 +8,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  outline: green dashed 1px;
+  /*outline: green dashed 1px;*/
 }
 
 html {
@@ -24,13 +24,20 @@ body {
   width: auto;
 }
 
+.ik-wrap{
+  height: auto;
+  height: 100%;
+  margin-bottom: -100px;
+  min-height: 100%;
+  position: relative;
+}
+
 /*Main header of the Webpage*/
 h1{
   text-align: center;
   font-size: 45px;
   color: black;
-  padding: 25px;
-  padding-bottom: 10px;
+  padding: auto;
 }
 /*------------------------------------*\
             Header//Navbar
@@ -47,10 +54,10 @@ div.navbarbackground{
 }
 
 div.later img{
-  width: 110px;
+  width: 130px;
   height: auto;
-  left: 10px;
-  top: -15px;
+  left: 0px;
+  top: 0px;
   position: fixed;
   z-index: 100;
   margin: 0px;
@@ -137,8 +144,11 @@ div.header{
 }
 
 #title{
-  position: relative;
-  top: 20px;
+  position: fixed;
+  top: 0px;
+  z-index: 999;
+  right: 48%;
+  width: 150px;
 }
 
 .search{
@@ -156,10 +166,14 @@ div.header{
 
 .box {
   width: 32%;
-  border: solid 1px #CCC;
+  border: solid 3px #CCC;
   float: left;
   padding: 5px;
 }
+  .box:nth-child(1n) {
+    margin-top: 55px;
+  }
+
   .box:nth-child(n) {
     margin-bottom: 2%;
     margin-right: 2%;
@@ -174,7 +188,7 @@ div.header{
     width: 100%;
   }
 
-  .pull--right {
+.pull--right {
   float: right;
 }
 
@@ -187,7 +201,7 @@ div.header{
 \*------------------------------------*/
 .btn {
   background: #FFF;
-  border: solid 1px #CCC;
+  border: solid 2px #CCC;
   height: 25px;
   text-align: center;
   width: 75px;
