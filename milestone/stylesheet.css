@@ -1,19 +1,40 @@
-*{
-  outline: green dashed 1px;
+/*------------------------------------*\
+              ¡GENERAL
+\*------------------------------------*/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
   padding: 0;
+  outline: green dashed 1px;
 }
-/*The main body of the Webpage*/
-body{
-  background-color: #FAFFFF;
+
+html {
+  height: 100%;
+}
+
+body {
+  background: #FFF;
+  color: #494949;
+  font-family: sans-serif;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
   width: auto;
 }
+
 /*Main header of the Webpage*/
 h1{
   text-align: center;
   font-size: 45px;
   color: black;
+  padding: 25px;
+  padding-bottom: 10px;
 }
-
+/*------------------------------------*\
+            Header//Navbar
+\*------------------------------------*/
 div.navbarbackground{
   background-color: #828282;
   position: fixed;
@@ -27,11 +48,12 @@ div.navbarbackground{
 
 div.later img{
   width: 110px;
-  height: 100px;
+  height: auto;
   left: 10px;
-  top: -25px;
+  top: -15px;
   position: fixed;
   z-index: 100;
+  margin: 0px;
 }
 
 div.homeButton img{
@@ -94,6 +116,7 @@ div ul li {
   font-family: Helvetica,Arial;
   color: white;
   font-size: 25px;
+  background: gray;
 }
 
 div ul li a{
@@ -113,10 +136,6 @@ div ul li a:hover{
 div.header{
 }
 
-/*We can put an image of website here, 750X90 px*/
-
-
-/*color and shape of the header which is currently red*/
 #title{
   position: relative;
   top: 20px;
@@ -126,4 +145,50 @@ div.header{
   position: relative;
   top: 50px;
   z-index: 100;
+}
+
+/*------------------------------------*\
+                ¡BOX
+\*------------------------------------*/
+.box-wrap {
+  margin: 50px 0;
+}
+
+.box {
+  width: 32%;
+  border: solid 1px #CCC;
+  float: left;
+  padding: 5px;
+}
+  .box:nth-child(n) {
+    margin-bottom: 2%;
+    margin-right: 2%;
+  }
+  .box:nth-child(3n) {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+  .box img {
+    display: block;
+    margin: 0 0 10px;
+    width: 100%;
+  }
+
+  .pull--right {
+  float: right;
+}
+
+.pull--left {
+  float: left;
+}
+
+  /*------------------------------------*\
+              ¡BUTTONS
+\*------------------------------------*/
+.btn {
+  background: #FFF;
+  border: solid 1px #CCC;
+  height: 25px;
+  text-align: center;
+  width: 75px;
 }
