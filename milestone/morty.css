@@ -1,0 +1,12 @@
+.SM-profileImage {
+  position: relative;
+  width: 360px;
+  margin: 10% auto;
+}
+
+.SM-profileInfo {
+  position: relative;
+  width: 200px;
+  background-color: blue;
+  
+}
