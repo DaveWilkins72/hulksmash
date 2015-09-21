@@ -8,7 +8,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /*outline: green dashed 1px;*/
+  /*outline:  solid 1px;*/
 }
 
 html {
@@ -16,8 +16,7 @@ html {
 }
 
 body {
-  background: #FFF;
-  color: #494949;
+  background: #edecec;
   font-family: sans-serif;
   height: 100%;
   -webkit-font-smoothing: antialiased;
@@ -27,18 +26,20 @@ body {
 .ik-wrap{
   height: auto;
   height: 100%;
-  margin-bottom: -100px;
+  margin-bottom: 400px;
   min-height: 100%;
   position: relative;
 }
 
-/*Main header of the Webpage*/
-h1{
-  text-align: center;
-  font-size: 45px;
-  color: black;
-  padding: auto;
+.lk-squeeze {
+  position: relative;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;
 }
+
 /*------------------------------------*\
             Header//Navbar
 \*------------------------------------*/
@@ -54,8 +55,8 @@ div.navbarbackground{
 }
 
 div.later img{
-  width: 130px;
-  height: auto;
+  width: 160px;
+  height: 50px;
   left: 0px;
   top: 0px;
   position: fixed;
@@ -140,22 +141,19 @@ div ul li a:hover{
   color: black;
 }
 
-div.header{
-}
-
+/*Title of each webpage*/
 #title{
+  text-align: center;
   position: fixed;
   top: 0px;
-  z-index: 999;
-  right: 48%;
-  width: 150px;
+  z-index: 99;
+  width: 100%;
+  font-size: 22px;
+  color: black;
+  padding: auto;
+  font-family: monospace;
 }
 
-.search{
-  position: relative;
-  top: 50px;
-  z-index: 100;
-}
 
 /*------------------------------------*\
                 ¡BOX
@@ -166,12 +164,13 @@ div.header{
 
 .box {
   width: 32%;
-  border: solid 3px #CCC;
+  border: solid 3px green;
   float: left;
   padding: 5px;
+  /*background-color: #e2e4e4;*/
 }
-  .box:nth-child(1n) {
-    margin-top: 55px;
+  .box:nth-child(-n+3) {
+    margin-top: 45px;
   }
 
   .box:nth-child(n) {
@@ -186,6 +185,7 @@ div.header{
     display: block;
     margin: 0 0 10px;
     width: 100%;
+    border: solid 3px green;
   }
 
 .pull--right {
@@ -201,8 +201,21 @@ div.header{
 \*------------------------------------*/
 .btn {
   background: #FFF;
-  border: solid 2px #CCC;
+  border: solid 2px green;
   height: 25px;
   text-align: center;
   width: 75px;
+}
+
+/*------------------------------------*\
+                ¡FOOTER
+\*------------------------------------*/
+.lk-push,
+footer {
+  height: 40px;
+}
+
+footer {
+  padding: 10px 0;
+  background-color: gray;
 }
