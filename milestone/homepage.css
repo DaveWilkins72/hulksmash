@@ -1,0 +1,42 @@
+.bb-button{
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: auto;
+	width: 60px;
+	height: 25px;
+	background-color: #D3D3D3;
+	padding-top: 2px;
+	text-decoration: none;
+	color: black;
+}
+
+.bb-h2{
+	color: red;
+}
+
+.bb-wrapper{
+	position: absolute;
+	text-align: center;
+	left: 50%;
+	top: 50%;
+	height: 120px;
+	margin-top: -60px;
+	margin-left: -115px;
+	
+}
+
+#login{
+	position: relative;
+	margin-right: 5px;
+}
+
+#signup{
+	margin-left: 5px;
+}
+
+.bb-p{
+	font-family: Courier;
+	font-style: Italic;
+}
+	
