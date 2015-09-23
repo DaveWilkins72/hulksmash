@@ -8,7 +8,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /*outline:  solid 1px;*/
 }
 
 html {
@@ -16,25 +15,17 @@ html {
 }
 
 body {
-  background: #edecec;
+  background: #e8e7e7;
   font-family: sans-serif;
   height: 100%;
   -webkit-font-smoothing: antialiased;
   width: auto;
 }
 
-.ik-wrap{
-  height: auto;
-  height: 100%;
-  margin-bottom: 400px;
-  min-height: 100%;
-  position: relative;
-}
-
-.lk-squeeze {
+.jr-squeeze {
   position: relative;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 2px;
   width: 100%;
   height: 100%;
   max-width: 1000px;
@@ -44,7 +35,7 @@ body {
             Header//Navbar
 \*------------------------------------*/
 div.navbarbackground{
-  background-color: #828282;
+  background-color: #666464;
   position: fixed;
   width: 150%;
   height: 50px;
@@ -62,6 +53,7 @@ div.later img{
   position: fixed;
   z-index: 100;
   margin: 0px;
+  border-top-right-radius: 50px;
 }
 
 div.homeButton img{
@@ -164,17 +156,17 @@ div ul li a:hover{
 
 .box {
   width: 32%;
-  border: solid 3px green;
   float: left;
-  padding: 5px;
-  /*background-color: #e2e4e4;*/
+  padding: 15px;
+  box-shadow: 2px 2px 5px gray;
+  background-color: white;
 }
   .box:nth-child(-n+3) {
     margin-top: 45px;
   }
 
   .box:nth-child(n) {
-    margin-bottom: 2%;
+    margin-bottom: 5%;
     margin-right: 2%;
   }
   .box:nth-child(3n) {
@@ -183,9 +175,9 @@ div ul li a:hover{
   }
   .box img {
     display: block;
-    margin: 0 0 10px;
+    margin: 0 0 15px;
     width: 100%;
-    border: solid 3px green;
+    border: solid 1px black;
   }
 
 .pull--right {
@@ -201,21 +193,10 @@ div ul li a:hover{
 \*------------------------------------*/
 .btn {
   background: #FFF;
-  border: solid 2px green;
+  border: solid 2px black;
   height: 25px;
   text-align: center;
   width: 75px;
 }
 
-/*------------------------------------*\
-                ¡FOOTER
-\*------------------------------------*/
-.lk-push,
-footer {
-  height: 40px;
-}
-
-footer {
-  padding: 10px 0;
-  background-color: gray;
-}
+\
