@@ -1,10 +1,27 @@
 .SM-profileImage {
   position: relative;
   width: 360px;
-  margin: 10% auto;
+  margin: 10% auto 0;
 }
 
 .SM-userName {
   position: relative;
   width: 200px;
+  margin: 0 auto;
+}
+
+.SM-info {
+
+}
+
+.SM-bio {
+
+}
+
+.SM-search {
+
+}
+
+.SM-profileInfo {
+  float: left;
 }
