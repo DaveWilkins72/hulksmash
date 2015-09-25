@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  background: #e8e7e7;
+  background-image: url(images/bg.jpg);
   font-family: sans-serif;
   height: 100%;
   -webkit-font-smoothing: antialiased;
@@ -46,14 +46,12 @@ div.navbarbackground{
 }
 
 div.later img{
-  width: 160px;
   height: 50px;
   left: 0px;
   top: 0px;
   position: fixed;
   z-index: 100;
   margin: 0px;
-  border-top-right-radius: 50px;
 }
 
 div.homeButton img{
@@ -146,10 +144,6 @@ div ul li a:hover{
   font-family: monospace;
 }
 
-/*.header{
-  display: none;
-}*/
-
 
 /*------------------------------------*\
                 ¡BOX
@@ -192,7 +186,7 @@ div ul li a:hover{
   float: left;
 }
 
-/*------------------------------------*\
+  /*------------------------------------*\
               ¡BUTTONS
 \*------------------------------------*/
 .btn {
@@ -201,56 +195,55 @@ div ul li a:hover{
   height: 25px;
   text-align: center;
   width: 75px;
+  
 }
-
+  
+  
 /*------------------------------------*\
-            Search Page
+              Login page CSS
 \*------------------------------------*/
 
-.content-inner {
-  margin: 20px 0;
-  padding: 50px;
+
+.bb-button{
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: auto;
+	width: 60px;
+	height: 25px;
+	background-color: #D3D3D3;
+	padding-top: 2px;
+	text-decoration: none;
+	color: black;
 }
 
-.jr-squeeze {
-  position: relative;
-  margin: 0 auto;
-  padding: 0 20px;
-  width: 100%;
-  height: 100%;
-  max-width: 1000px;
+.bb-h2{
+	color: red;
 }
 
-.search-input {
-  padding: 15px 200px 15px 15px;
-  border: 1px solid #CCC;
-  box-shadow: 2px 2px 5px gray;
+.bb-wrapper{
+	position: absolute;
+	text-align: center;
+	left: 50%;
+	top: 50%;
+	height: 120px;
+	margin-top: -60px;
+	margin-left: -115px;
+	
 }
 
-.search {
-  padding: 15px;
-  border: 1px solid #CCC;
-  box-shadow: 2px 2px 5px gray;
-  background-color: #FFF;
+#login{
+	position: relative;
+	margin-right: 5px;
 }
 
-.btn-2{
-  float: right;
-  background: #FFF;
-  border:  1px solid #ccc;
-  box-shadow: 2px 2px 5px gray;
-  height: 45px;
-  text-align: center;
-  width: 175px;
-  margin-top: -45px;
-  padding: 15px 0 0px 0;
+#signup{
+	margin-left: 5px;
 }
 
-div a{
-  text-decoration: none;
+.bb-p{
+	font-family: Courier;
+	font-style: Italic;
 }
+	
 
-div a:visited{
-  text-decoration: none;
-  color: black;
-}
