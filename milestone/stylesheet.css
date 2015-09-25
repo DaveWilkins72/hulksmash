@@ -146,6 +146,10 @@ div ul li a:hover{
   font-family: monospace;
 }
 
+/*.header{
+  display: none;
+}*/
+
 
 /*------------------------------------*\
                 ¡BOX
@@ -188,7 +192,7 @@ div ul li a:hover{
   float: left;
 }
 
-  /*------------------------------------*\
+/*------------------------------------*\
               ¡BUTTONS
 \*------------------------------------*/
 .btn {
@@ -199,4 +203,54 @@ div ul li a:hover{
   width: 75px;
 }
 
-\
+/*------------------------------------*\
+            Search Page
+\*------------------------------------*/
+
+.content-inner {
+  margin: 20px 0;
+  padding: 50px;
+}
+
+.jr-squeeze {
+  position: relative;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;
+}
+
+.search-input {
+  padding: 15px 200px 15px 15px;
+  border: 1px solid #CCC;
+  box-shadow: 2px 2px 5px gray;
+}
+
+.search {
+  padding: 15px;
+  border: 1px solid #CCC;
+  box-shadow: 2px 2px 5px gray;
+  background-color: #FFF;
+}
+
+.btn-2{
+  float: right;
+  background: #FFF;
+  border:  1px solid #ccc;
+  box-shadow: 2px 2px 5px gray;
+  height: 45px;
+  text-align: center;
+  width: 175px;
+  margin-top: -45px;
+  padding: 15px 0 0px 0;
+}
+
+div a{
+  text-decoration: none;
+}
+
+div a:visited{
+  text-decoration: none;
+  color: black;
+}
