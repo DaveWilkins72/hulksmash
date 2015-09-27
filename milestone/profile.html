@@ -1,5 +1,5 @@
 <!Doctype html>
-<html>
+<html class="SM-html">
 <head>
   <meta name="charset" content="utf-8"/>
   <meta name="description" content="CS2610 Project"/>
@@ -53,14 +53,32 @@
   <div class="SM-userName">
   <h1>[User Name]</h1>
   </div>
-  <form class="SM-profileInfo" action="">
-    <input class="SM-info" type="text" name="name">
-    <input class="SM-info" type="text" name="email">
-    <input class="SM-bio" type="text" name="bio">
-    <input class="search" type="submit" value="submit">
+
+  <form  name="SM-myForm" class="SM-form" onsubmit="return validateForm()" method="post" action="dashboard.html">
+      <fieldset>
+          <div class="SM-div">
+              <label for="name"><b class="SM-bold">*Username:</b></label>
+              <input class="SM-info" name="SM-mForm" type="text" placeholder="Username">
+          </div>
+
+          <div class="SM-div">
+              <label for="email"><b class="SM-bold">*Email Address:</b></label>
+              <input class="SM-info" name="SM-mForm" type="text" placeholder="Email Address">
+          </div>
+
+          <div class="SM-div">
+              <label for="bio"><b class="SM-bold">*Bio:</b></label>
+              <input class="SM-bio" name="SM-mForm" type="text" placeholder="Bio">
+          </div>
+
+          <div class="SM-div">
+            <a href="dashboard.html">
+              <button type="submit" class="SM-controls"><b class="SM-bold">Submit</b></button>
+            </a>
+          </div>
+      </fieldset>
   </form>
 
-
-
 </body>
+<footer></footer>
 </html>
