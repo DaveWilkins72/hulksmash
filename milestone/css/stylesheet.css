@@ -90,45 +90,63 @@ div.settings img{
   z-index: 100;
 }
 
-div.settingPulldown img{
-  width: 250px;
-  height: auto;
-  top: 50px;
-  position: relative;
-  float: right;
-  right: -0%;
+.arrow-up{
   position: fixed;
-  z-index: 95;
+  right: 2.42%;
+  top: 50px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #8a8888;
 }
 
-div ul{
+.dropdown{
   position: fixed;
-  top: 30px;
-  right: 0px;
+  top: 60px;
+  right: .5%;
   z-index: 100;
   list-style-type: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  z-index: 100;
 
 }
-div ul li {
-  padding: 8px 45px 15px 0px;
+
+.dropdown li {
+  padding: 8px 30px 15px 15px;
+  border-bottom: 1px solid black;
   font-family: Helvetica,Arial;
-  color: white;
-  font-size: 25px;
-  background: gray;
+  color: black;
+  font-size: 15px;
+  background: #fff;
+  box-shadow: 3px 3px 8px gray;
+  z-index: 99;
 }
 
-div ul li a{
+.dropdown li a{
   text-decoration: none;
   list-style: none;
 }
 
-div ul li a:visited{
-  text-decoration: none;
-  color: white;
+.dropdown li:nth-child(1){
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
-div ul li a:hover{
+.dropdown li:last-child{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom: none;
+}
+
+.dropdown li a:visited{
+  text-decoration: none;
   color: black;
+}
+
+.dropdown li a:hover{
+  color: red;
 }
 
 /*Title of each webpage*/
