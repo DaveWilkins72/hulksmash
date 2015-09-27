@@ -57,25 +57,25 @@ div.later img{
 div.homeButton img{
    height: 30px;
    width: 30px;
-   right: 160px;
+   right: 145px;
    top: 10px;
    position: fixed;
    z-index: 100;
 }
 
-div.magnifyingGlass img{
+div.profile img{
   height: 30px;
   width: 30px;
-  right: 70px;
+  right: 105px;
   top: 10px;
   position: fixed;
   z-index: 100;
 }
 
-div.profile img{
+div.magnifyingGlass img{
   height: 30px;
   width: 30px;
-  right: 115px;
+  right: 65px;
   top: 10px;
   position: fixed;
   z-index: 100;
@@ -92,7 +92,7 @@ div.settings img{
 
 .arrow-up{
   position: fixed;
-  right: 2.42%;
+  right: 31.25px;
   top: 50px;
   width: 0;
   height: 0;
