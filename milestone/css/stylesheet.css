@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  background-image: url(images/bg.jpg);
+  background-image: url("backgroundImage/bg.jpg");
   font-family: sans-serif;
   height: 100%;
   -webkit-font-smoothing: antialiased;
@@ -35,7 +35,7 @@ body {
             Header//Navbar
 \*------------------------------------*/
 div.navbarbackground{
-  background-color: #666464;
+  background-color: #8a8888;
   position: fixed;
   width: 150%;
   height: 50px;
@@ -301,4 +301,26 @@ div a:visited{
 
 div a{
   text-decoration: none;
+}
+
+/*------------------------------------*\
+-         Saved  Search Page
+\*------------------------------------*/
+
+.jr-btn-3{
+  position: relative;
+  float: left;
+  background: #FFF;
+  border:  1px solid #ccc;
+  box-shadow: 2px 2px 5px gray;
+  height: 45px;
+  width: 100%;
+  text-align: center;
+  margin-top: 25px;
+  padding: 15px 0 0px 0;
+  margin-right: px;
+}
+
+.jr-btn-3:nth-child(1){
+  margin-top: 100px;
 }
