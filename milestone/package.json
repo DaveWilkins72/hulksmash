@@ -1,11 +1,11 @@
 {
-  "name": "milestone",
+  "name": "cs2610-fixes",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
     "express": "^4.13.3",
-    "nodemon": "^1.7.1"
+    "express-handlebars": "^2.0.1"
   },
   "devDependencies": {},
   "scripts": {
