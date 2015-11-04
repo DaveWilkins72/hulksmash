@@ -243,6 +243,7 @@ div.settings img{
 	padding-top: 2px;
 	text-decoration: none;
 	color: black;
+  margin-top: 5px;
 }
 
 .bb-h2{
@@ -272,6 +273,7 @@ div.settings img{
 .bb-p{
 	font-family: Courier;
 	font-style: Italic;
+  margin-bottom: 10px;
 }
 
 /*------------------------------------*\

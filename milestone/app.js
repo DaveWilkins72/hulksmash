@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/", function(req, res){
   ACCESS_TOKEN = ''
-  res.render('home', {})
+  res.render('home', {layout: 'homepage'})
 });
 
 app.get("/dashboard", function(req, res){
@@ -30,17 +30,14 @@ app.get("/dashboard", function(req, res){
 });
 
 app.get("/profile", function(req, res){
-
   res.render('profile', {})
 });
 
 app.get("/search", function(req, res){
-
   res.render('search', {})
 });
 
 app.get("/savedSearch", function(req, res){
-
   res.render('savedSearch', {})
 });
 
