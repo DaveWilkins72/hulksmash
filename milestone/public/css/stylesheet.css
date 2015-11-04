@@ -206,6 +206,10 @@ div.settings img{
   float: left;
 }
 
+.contain{
+  float: right;
+}
+
 /*.header{
   display: none;
 }*/

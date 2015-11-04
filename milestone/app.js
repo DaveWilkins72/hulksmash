@@ -4,6 +4,7 @@ var request = require('request');
 var path = require("path");
 
 var app = express();
+var ACCESS_TOKEN='your access token here';
 var PORT = 3000
 
 app.engine('handlebars', exphbs({defaultLayout: 'base'}));
@@ -17,8 +18,15 @@ app.get("/", function(req, res){
 });
 
 app.get("/dashboard", function(req, res){
-
-  res.render('dashboard', {})
+  var options = {
+    url: 'https://api.instagram.com/v1/users/self/feed?access_token=' + ACCESS_TOKEN
+  }
+    request.get(options, function(error, response, body){
+    var feed = JSON.parse(body)
+    res.render('dashboard', {
+      feed: feed.data
+    })
+  })
 });
 
 app.get("/profile", function(req, res){

@@ -6,69 +6,17 @@
   <div class="jr-content">
     <div class= "jr-squeeze">
       <div class="box-wrap jr-clear">
+      {{#each feed}}
         <div class="box">
-          <img src="images/placard.png" />
-          <div class="group-btn jr-clear">
-            <button class="btn accent-1 pull--left">Likes</button>
-            <button class="btn accent-1 pull--right">Comments</button>
+          <div class="contain">
+            <img src="{{this.images.standard_resolution.url}}" alt""/>
+            <div class="group-btn jr-clear">
+              <button class="btn accent-1 pull--left">Likes</button>
+              <button class="btn accent-1 pull--right">Comments</button>
+            </div>
           </div>
         </div>
-        <div class="box">
-          <img src="images/placard.png" />
-          <div class="group-btn jr-clear">
-            <button class="btn accent-1 pull--left">Likes</button>
-            <button class="btn accent-1 pull--right">Comments</button>
-          </div>
-        </div>
-        <div class="box">
-          <img src="images/placard.png" />
-          <div class="group-btn jr-clear">
-            <button class="btn accent-1 pull--left">Likes</button>
-            <button class="btn accent-1 pull--right">Comments</button>
-          </div>
-        </div>
-        <div class="box">
-          <img src="images/placard.png" />
-          <div class="group-btn jr-clear">
-            <button class="btn accent-1 pull--left">Likes</button>
-            <button class="btn accent-1 pull--right">Comments</button>
-          </div>
-        </div>
-        <div class="box">
-          <img src="images/placard.png" />
-          <div class="group-btn jr-clear">
-            <button class="btn accent-1 pull--left">Likes</button>
-            <button class="btn accent-1 pull--right">Comments</button>
-          </div>
-        </div>
-        <div class="box">
-          <img src="images/placard.png" />
-          <div class="group-btn jr-clear">
-            <button class="btn accent-1 pull--left">Likes</button>
-            <button class="btn accent-1 pull--right">Comments</button>
-          </div>
-        </div>
-        <div class="box">
-          <img src="images/placard.png" />
-          <div class="group-btn jr-clear">
-            <button class="btn accent-1 pull--left">Likes</button>
-            <button class="btn accent-1 pull--right">Comments</button>
-          </div>
-        </div>
-        <div class="box">
-          <img src="images/placard.png" />
-          <div class="group-btn jr-clear">
-            <button class="btn accent-1 pull--left">Likes</button>
-            <button class="btn accent-1 pull--right">Comments</button>
-          </div>
-        </div>
-        <div class="box">
-          <img src="images/placard.png" />
-          <div class="group-btn jr-clear">
-            <button class="btn accent-1 pull--left">Likes</button>
-            <button class="btn accent-1 pull--right">Comments</button>
-          </div>
-        </div>
+      {{/each}}
       </div>
     </div>
   </div>
