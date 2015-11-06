@@ -3,20 +3,25 @@ var exphbs = require('express-handlebars');
 var request = require('request');
 var path = require("path");
 var querystring = require('querystring')
+var cfg = require('./config')
+var session = require('express-session')
 
 var app = express();
 var PORT = 3000;
 
 var ACCESS_TOKEN='';
-var CLIENT_ID = 'fec535d5d4744523b272cde10c533caa'
-var CLIENT_SECRET = '7b0e709d6ec7426ba0a67a2184a4452f'
-var REDIRECT_URI = 'http://127.0.0.1:3000/auth/finalize'
 
 app.engine('handlebars', exphbs({defaultLayout: 'base'}));
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  cookieName: 'session',
+  secret: 'bcb',
+  resave: false,
+  saveUninitialized: true
+}))
 
 app.get("/", function(req, res){
   ACCESS_TOKEN = ''
@@ -25,8 +30,8 @@ app.get("/", function(req, res){
 
 app.get('/authorize', function(req, res){
   var qs = {
-    client_id: CLIENT_ID,
-    redirect_uri: REDIRECT_URI,
+    client_id: cfg.client_id,
+    redirect_uri: cfg.redirect_uri,
     response_type: 'code'
   }
 
@@ -39,9 +44,9 @@ app.get('/authorize', function(req, res){
 
 app.get('/auth/finalize', function(req, res){
 var post_data = {
-  client_id: CLIENT_ID,
-  client_secret: CLIENT_SECRET,
-  redirect_uri: REDIRECT_URI,
+  client_id: cfg.client_id,
+  client_secret: cfg.client_secret,
+  redirect_uri: cfg.redirect_uri,
   grant_type: 'authorization_code',
   code: req.query.code
 }
