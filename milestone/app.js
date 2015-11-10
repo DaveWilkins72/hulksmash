@@ -9,8 +9,6 @@ var session = require('express-session')
 var app = express();
 var PORT = 3000;
 
-var ACCESS_TOKEN='';
-
 app.engine('handlebars', exphbs({defaultLayout: 'base'}));
 app.set('view engine', 'handlebars');
 
@@ -24,7 +22,7 @@ app.use(session({
 }))
 
 app.get("/", function(req, res){
-  ACCESS_TOKEN = ''
+  req.session.access_token = ''
   res.render('home', {layout: 'homepage'})
 });
 
@@ -68,14 +66,14 @@ app.get('/auth/finalize', function(req, res, next){
       return next(err)
     }
 
-    ACCESS_TOKEN = data.access_token
+    req.session.access_token = data.access_token
     res.redirect('/dashboard')
   })
 })
 
 app.get("/dashboard", function(req, res, next){
   var options = {
-    url: 'https://api.instagram.com/v1/users/self/feed?access_token=' + ACCESS_TOKEN
+    url: 'https://api.instagram.com/v1/users/self/feed?access_token=' + req.session.access_token
   }
     request.get(options, function(error, response, body){
     try {
