@@ -222,8 +222,7 @@ div.settings img{
   border: solid 2px black;
   height: 25px;
   text-align: center;
-  width: 75px;
-
+  width: 100px;
 }
 
 
@@ -238,7 +237,7 @@ div.settings img{
 	border-radius: 5px;
 	margin: auto;
 	width: 600px;
-	height: 25px;
+	height: 50px;
 	background-color: #D3D3D3;
 	padding-top: 2px;
 	text-decoration: none;
@@ -257,17 +256,12 @@ div.settings img{
 	top: 50%;
 	height: 120px;
 	margin-top: -60px;
-	margin-left: -115px;
-
+	margin-left: -75px;
 }
 
 #login{
 	position: relative;
 	margin-right: 5px;
-}
-
-#signup{
-	margin-left: 5px;
 }
 
 .bb-p{
