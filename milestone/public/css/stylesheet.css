@@ -10,17 +10,19 @@
   padding: 0;
 }
 
-html {
-  height: 100%;
-}
+
 
 body {
-  background-image: url("backgroundImage/bg.jpg");
   font-family: sans-serif;
-  height: 100%;
   -webkit-font-smoothing: antialiased;
   width: auto;
+
+  background: -webkit-linear-gradient(#C0DFD9, #FFFFFF); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#C0DFD9, #FFFFFF); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#C0DFD9, #FFFFFF); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#C0DFD9, #FFFFFF); /* Standard syntax (must be last) */
 }
+
 
 .jr-squeeze {
   position: relative;
@@ -35,7 +37,7 @@ body {
             Header//Navbar
 \*------------------------------------*/
 div.navbarbackground{
-  background-color: #8a8888;
+  background-color: #3b3a36;
   position: fixed;
   width: 150%;
   height: 50px;
