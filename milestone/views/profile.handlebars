@@ -1,13 +1,13 @@
 <div id="title">
   <img src="images/profile.png">
 </div>
-
-<div class="SM-profileImage"><img src="images/profileButton2.png" alt="Profile picture."> </div>
+{{#each feed}}
+<div class="SM-profileImage"><img src="{{user.profile_picture}}" alt=""> </div>
 
 <div class="SM-userName">
-  <h1>[User Name]</h1>
+  <h1>{{this.user.username}}</h1>
 </div>
-
+{{/each}}
 <form  name="SM-myForm" class="SM-form" onsubmit="return validateForm()" method="post" action="dashboard.html">
     <fieldset>
         <div class="SM-div">

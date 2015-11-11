@@ -95,10 +95,26 @@ app.get("/dashboard", function(req, res, next){
   })
 });
 
-app.get("/profile", function(req, res){
-  res.render('profile', {
-    Username: name
+app.get("/profile", function(req, res, next){
+  var options = {
+    url: 'https://api.instagram.com/v1/users/self/feed?access_token=' + req.session.access_token
+  }
+    request.get(options, function(error, response, body){
+    try {
+      var feed = JSON.parse(body)
+      if (feed.meta.code > 200) {
+        return next(feed.meta.error_message)
+      }
+    }
+    catch(err) {
+      return next(err)
+    }
+    res.render('profile', {
+      feed: feed.data,
+      Username: name
+    })
   })
+
 });
 
 app.get("/search", function(req, res){
