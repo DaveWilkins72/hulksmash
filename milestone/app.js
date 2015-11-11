@@ -5,6 +5,7 @@ var path = require("path");
 var querystring = require('querystring')
 var cfg = require('./config')
 var session = require('express-session')
+var name;
 
 var app = express();
 var PORT = 3000;
@@ -66,6 +67,7 @@ app.get('/auth/finalize', function(req, res, next){
       return next(err)
     }
 
+    name = data.user.full_name
     req.session.access_token = data.access_token
     res.redirect('/dashboard')
   })
@@ -87,21 +89,28 @@ app.get("/dashboard", function(req, res, next){
     }
 
     res.render('dashboard', {
-      feed: feed.data
+      feed: feed.data,
+      Username: name
     })
   })
 });
 
 app.get("/profile", function(req, res){
-  res.render('profile', {})
+  res.render('profile', {
+    Username: name
+  })
 });
 
 app.get("/search", function(req, res){
-  res.render('search', {})
+  res.render('search', {
+    Username: name
+  })
 });
 
 app.get("/savedSearch", function(req, res){
-  res.render('savedSearch', {})
+  res.render('savedSearch', {
+    Username: name
+  })
 });
 
 app.use(function(err, req, res, next) {
