@@ -23,7 +23,7 @@ app.use(session({
 }))
 
 app.get("/", function(req, res){
-  req.session.access_token = ''
+  req.session.access_token = null
   res.render('home', {layout: 'homepage'})
 });
 
