@@ -101,7 +101,7 @@ app.get("/dashboard", function(req, res, next){
 
 app.get("/profile", function(req, res, next){
   var options = {
-    url: 'https://api.instagram.com/v1/users/self/feed?access_token=' + req.session.access_token
+    url: 'https://api.instagram.com/v1/users/self?access_token=' + req.session.access_token
   }
     request.get(options, function(error, response, body){
     try {
@@ -138,7 +138,8 @@ app.get('/search', function(req, res, next) {
     if (SEARCH_QUERY == '') {
       res.render('search', {
           title: 'Search',
-          feed: {}
+          feed: {},
+          Username: name
         })
       }
      else {
