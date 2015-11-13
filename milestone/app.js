@@ -5,8 +5,10 @@ var path = require("path");
 var querystring = require('querystring')
 var cfg = require('./config')
 var session = require('express-session')
+var bodyParser = require('body-parser')
 var name;
-
+var router = express.Router();
+var SEARCH_QUERY = ''
 var app = express();
 var PORT = 3000;
 
@@ -14,6 +16,8 @@ app.engine('handlebars', exphbs({defaultLayout: 'base'}));
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(session({
   cookieName: 'session',
@@ -117,17 +121,87 @@ app.get("/profile", function(req, res, next){
 
 });
 
-app.get("/search", function(req, res){
-  res.render('search', {
-    Username: name
-  })
-});
-
 app.get("/savedSearch", function(req, res){
   res.render('savedSearch', {
     Username: name
   })
 });
+
+
+// SEARCH PAGE \\
+
+app.get('/search', function(req, res, next) {
+  if (req.session.access_token == null) {
+    res.redirect('localhost:3000/')
+  } else {
+
+    if (SEARCH_QUERY == '') {
+      res.render('search', {
+          title: 'Search',
+          feed: {}
+        })
+      }
+     else {
+
+
+      var options = {
+        url: 'https://api.instagram.com/v1/tags/' + SEARCH_QUERY + '/media/recent?access_token=' + req.session.access_token + '&count=9'
+
+      }
+      console.log(options.url)
+
+      request.get(options, function(error, response, body) {
+
+        if (error) {
+          console.log("error if 1")
+          return next(error)
+        }
+        try {
+          var feed = JSON.parse(body)
+        } catch (err) {
+          console.log("error if 2")
+            // return error if what we get back is HTML code
+          return next(err) // displays the error on the page
+            // return res.reditect('/') // just redirects to homepage
+        }
+
+        if (feed.meta.code > 200) {
+          console.log("error code above 200")
+          return next(feed.meta.error_message)
+        }
+
+        res.render('search', {
+          title: 'Search',
+          feed: feed.data
+        })
+      })
+    }
+  }
+})
+
+app.post('/search', function(req, res) {
+  var query = req.body.query
+
+  var options = {
+    url: 'https://api.instagram.com/v1/tags/' + query +'/media/recent?access_token=' + req.session.access_token
+  }
+    request.get(options, function(error, response, body){
+    try {
+      var feed = JSON.parse(body)
+      if (feed.meta.code > 200) {
+        return next(feed.meta.error_message)
+      }
+    }
+    catch(err) {
+      return next(err)
+    }
+
+    res.render('search', {
+      feed: feed.data
+    })
+  })
+
+})
 
 app.use(function(err, req, res, next) {
   res.status(err.status || 500)
@@ -136,5 +210,8 @@ app.use(function(err, req, res, next) {
     error: {}
   })
 })
+
+
+// SEARCH PAGE END \\
 
 app.listen(PORT);
