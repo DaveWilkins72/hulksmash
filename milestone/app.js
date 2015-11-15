@@ -174,6 +174,7 @@ app.get('/search', function(req, res, next) {
         res.render('search', {
           title: 'Search',
           feed: feed.data
+          Username: name
         })
       })
     }
