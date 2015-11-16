@@ -173,7 +173,7 @@ app.get('/search', function(req, res, next) {
 
         res.render('search', {
           title: 'Search',
-          feed: feed.data
+          feed: feed.data,
           Username: name
         })
       })
@@ -199,7 +199,8 @@ app.post('/search', function(req, res) {
     }
 
     res.render('search', {
-      feed: feed.data
+      feed: feed.data,
+      Username: name
     })
   })
 
