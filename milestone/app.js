@@ -6,6 +6,7 @@ var querystring = require('querystring')
 var cfg = require('./config')
 var session = require('express-session')
 var bodyParser = require('body-parser')
+var MongoClient = require('mongodb').MongoClient
 var name;
 var router = express.Router();
 var SEARCH_QUERY = ''
@@ -203,6 +204,18 @@ app.post('/search', function(req, res) {
       Username: name
     })
   })
+
+  var insertSearched = function(db, searched, callback) {
+  //Get the user's collection from the database
+    var collection = db.collection('searches')
+    collection.insert(searched, function(err, result) {
+      assert.equal(err, null)
+      assert.equal(1, result.result.n)
+      assert.equal(1, result.ops.length)
+      console.log('Inserted one document into the users collection.')
+      callback(result)
+    })
+  }
 
 })
 
