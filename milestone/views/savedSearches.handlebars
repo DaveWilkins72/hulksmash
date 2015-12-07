@@ -8,36 +8,15 @@
 
       {{#if user.savedSearches}}
         {{#each user.savedSearches}}
-          <form action="/savedSearches" method="post">
-            {{this}}
+        <div class = "jr-btn-3">
+          <form action="/savedSearches/remove" method="post">
+            <a href = "#"<strong>#{{this}}</strong></a>
             <input type="hidden" name="savedSearch" value="{{this}}">
             <button type="submit">Delete</button>
           </form>
+        </div>
         {{/each}}
       {{/if}}
-
-      <!-- <div class="jr-btn-3">
-        <a href = "#"<strong>#fishing</strong></a>
-      </div>
-      <div class="jr-btn-3">
-        <a href = "#"<strong>#mtnBiking</strong></a>
-      </div>
-      <div class="jr-btn-3">
-        <a href = "#"<strong>#Burgers</strong></a>
-      </div>
-      <div class="jr-btn-3">
-        <a href = "#"<strong>#Sushi</strong></a>
-      </div>
-      <div class="jr-btn-3">
-        <a href = "#"<strong>#Hotrod</strong></a>
-      </div>
-      <div class="jr-btn-3">
-        <a href = "#"<strong>#Avengers</strong></a>
-      </div>
-      <div class="jr-btn-3">
-        <a href = "#"<strong>#Pizza</strong></a>
-      </div> -->
-
       <p><br/>&nbsp;</p>
       <p><br/>&nbsp;</p>
     </div>

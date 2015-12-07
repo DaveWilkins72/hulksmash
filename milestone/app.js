@@ -68,19 +68,26 @@ app.get('/auth/finalize', function(req, res, next){
   request.post(options, function(error, response, body){
     try {
       var data = JSON.parse(body)
+      var user = data.user
     }
     catch(err) {
       return next(err)
     }
 
-    var user = data
-    Users.insert(user, function(result) {
-      req.session.userId = result.ops[0]._id
-    })
-
     name = data.user.full_name
     req.session.access_token = data.access_token
-    res.redirect('/dashboard')
+    req.session.userId = data.user.id
+    user._id = user.id
+    delete user.id
+    Users.find(user._id, function(document) {
+      if(!document) {
+        Users.insert(user, function(result) {
+          res.redirect('/dashboard')
+        })
+      } else {
+        res.redirect('/dashboard')
+      }
+    })
   })
 })
 
@@ -132,7 +139,7 @@ app.get("/savedSearches", function(req, res){
   if (req.session.userId) {
     //Find user
     Users.find(req.session.userId, function(document) {
-      if (!document) return res.redirect('/savedSearches', {
+      if (!document) return res.redirect('/', {
         Username: name
       })
       //Render the update view
@@ -157,7 +164,9 @@ app.post('/savedSearches/add', function(req, res) {
   var userId = req.session.userId
   //Add the tag to the user
   Users.addSavedSearch(userId, savedSearch, function() {
-    res.redirect('/search')
+    res.redirect('/search', {
+      Username: name
+    })
   })
 })
 
@@ -166,7 +175,7 @@ app.post('/savedSearches/remove', function(req, res) {
   var userId = req.session.userId
   //Add the tag to the user
   Users.removeSavedSearch(userId, savedSearch, function() {
-    res.redirect('/search', {
+    res.redirect('/savedSearches', {
       Username: name
     })
   })

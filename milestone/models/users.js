@@ -19,7 +19,7 @@ exports.find = function(id, callback) {
   // Get the users collection
   var collection = db.get().collection('users')
   // Find a user
-  collection.findOne({'_id': ObjectId(id)}, function(err, document) {
+  collection.findOne({'_id': id}, function(err, document) {
     assert.equal(err, null)
     console.log('Found 1 user document')
     callback(document)
@@ -29,7 +29,6 @@ exports.find = function(id, callback) {
 exports.update = function(user, callback) {
   // Get the users collection
   var collection = db.get().collection('users')
-  user._id = ObjectId(user._id)
   // Update the user
   collection.update({'_id': user._id}, user, function(err, result) {
     assert.equal(err, null)
@@ -44,12 +43,12 @@ exports.addSavedSearch = function(userId, savedSearch, callback) {
   var collection = db.get().collection('users')
   // Add the tag
   collection.update(
-    {'_id': ObjectId(userId)},
+    {'_id': userId},
     { $push: { savedSearches: savedSearch }},
     function(err, result) {
       assert.equal(err, null)
       assert.equal(1, result.result.n)
-      console.log('Added 1 tag to a document in the users collection')
+      console.log('Added 1 savedSearch to a document in the users collection')
       callback()
     }
   )
@@ -60,13 +59,24 @@ exports.removeSavedSearch = function(userId, savedSearch, callback) {
   var collection = db.get().collection('users')
   // Add the tag
   collection.update(
-    {'_id': ObjectId(userId)},
+    {'_id': userId},
     { $pull: { savedSearches: savedSearch }},
     function(err, result) {
       assert.equal(err, null)
       assert.equal(1, result.result.n)
-      console.log('Added 1 tag to a document in the users collection')
+      console.log('Removed 1 savedSearch to a document in the users collection')
       callback()
     }
   )
+}
+
+exports.findSavedSearch = function(userId, savedSearch, callback) {
+  // Get the users collection
+  var collection = db.get().collection('users')
+  // Find a user and all their saved searches.
+  collection.findOne({'_id': id}, function(err, document) {
+    assert.equal(err, null)
+    console.log('Found savedSearch for user document')
+    callback(document)
+  })
 }
