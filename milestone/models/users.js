@@ -74,7 +74,7 @@ exports.findSavedSearch = function(userId, savedSearch, callback) {
   // Get the users collection
   var collection = db.get().collection('users')
   // Find a user and all their saved searches.
-  collection.findOne({'_id': id}, function(err, document) {
+  collection.findOne({'_id': userId}, function(err, document) {
     assert.equal(err, null)
     console.log('Found savedSearch for user document')
     callback(document)

@@ -13,6 +13,7 @@ var router = express.Router();
 var SEARCH_QUERY = ''
 var app = express();
 var PORT = 3000;
+var save = false;
 
 app.engine('handlebars', exphbs({defaultLayout: 'base'}));
 app.set('view engine', 'handlebars');
@@ -164,8 +165,37 @@ app.post('/savedSearches/add', function(req, res) {
   var userId = req.session.userId
   //Add the tag to the user
   Users.addSavedSearch(userId, savedSearch, function() {
-    res.redirect('/search', {
-      Username: name
+    var options = {
+      url: 'https://api.instagram.com/v1/tags/' + savedSearch + '/media/recent?access_token=' + req.session.access_token + '&count=9'
+
+    }
+    console.log(options.url)
+
+    request.get(options, function(error, response, body) {
+
+      if (error) {
+        console.log("error if 1")
+        return next(error)
+      }
+      try {
+        var feed = JSON.parse(body)
+      } catch (err) {
+        console.log("error if 2")
+          // return error if what we get back is HTML code
+        return next(err) // displays the error on the page
+          // return res.reditect('/') // just redirects to homepage
+      }
+
+      if (feed.meta.code > 200) {
+        console.log("error code above 200")
+        return next(feed.meta.error_message)
+      }
+
+      res.render('/search', {
+        title: 'Search',
+        feed: feed.data,
+        Username: name
+      })
     })
   })
 })
