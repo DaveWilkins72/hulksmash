@@ -38,3 +38,35 @@ exports.update = function(user, callback) {
     callback()
   })
 }
+
+exports.addSavedSearch = function(userId, savedSearch, callback) {
+  // Get the users collection
+  var collection = db.get().collection('users')
+  // Add the tag
+  collection.update(
+    {'_id': ObjectId(userId)},
+    { $push: { savedSearches: savedSearch }},
+    function(err, result) {
+      assert.equal(err, null)
+      assert.equal(1, result.result.n)
+      console.log('Added 1 tag to a document in the users collection')
+      callback()
+    }
+  )
+}
+
+exports.removeSavedSearch = function(userId, savedSearch, callback) {
+  // Get the users collection
+  var collection = db.get().collection('users')
+  // Add the tag
+  collection.update(
+    {'_id': ObjectId(userId)},
+    { $pull: { savedSearches: savedSearch }},
+    function(err, result) {
+      assert.equal(err, null)
+      assert.equal(1, result.result.n)
+      console.log('Added 1 tag to a document in the users collection')
+      callback()
+    }
+  )
+}
