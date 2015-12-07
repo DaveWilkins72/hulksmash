@@ -6,18 +6,7 @@
   <div class="jr-content">
     <div class= "jr-squeeze">
 
-      <form class="user-form" action="/savedSearches/add" method="post">
-        <input type="hidden" name="_id" value="{{user._id}}">
-        <p>
-          <input type="text" name="savedSearch" value="" placeholder="savedSearch Name">
-        </p>
-        <p>
-          <button type="submit">Submit</button>
-        </p>
-      </form>
-
       {{#if user.savedSearches}}
-        <h2>Saved Searches</h2>
         {{#each user.savedSearches}}
           <form action="/savedSearches/remove" method="post">
             {{this}}

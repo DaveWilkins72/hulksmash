@@ -124,19 +124,59 @@ app.get("/profile", function(req, res, next){
 });
 
 app.get("/savedSearches", function(req, res){
-  res.render('savedSearches', {
-    Username: name
-  })
+  if (req.session.userId) {
+    //Find user
+    Users.find(req.session.userId, function(document) {
+      if (!document) return res.redirect('/search', {
+        Username: name
+      })
+      //Render the update view
+      res.render('savedSearches', {
+        user: document,
+        Username: name
+      })
+    })
+  } else {
+    res.redirect('/search', {
+      Username: name
+    })
+  }
+
+  // res.render('savedSearches', {
+  //   Username: name
+  // })
 });
 
 app.post('/savedSearches/add', function(req, res) {
   var savedSearch = req.body.savedSearch
   var userId = req.session.userId
   //Add the tag to the user
-  Users.addTag(userId, savedSearch, function() {
+  Users.addSavedSearch(userId, savedSearch, function() {
     res.redirect('/savedSearches')
   })
 })
+
+app.post('/savedSearchess/remove', function(req, res) {
+  var savedSearch = req.body.savedSearch
+  var userId = req.session.userId
+  //Add the tag to the user
+  Users.removeSavedSearch(userId, savedSearch, function() {
+    res.redirect('/savedSearches', {
+      Username: name
+    })
+  })
+})
+
+// db.connect('mongodb://dbuser:password@ds055574.mongolab.com:55574/testing', function(err) {
+//   if (err) {
+//     console.log('Unable to connect to Mongo.')
+//     process.exit(1)
+//   } else {
+//     app.listen(3000, function() {
+//       console.log('Listening on port 3000...')
+//     })
+//   }
+// })
 
 // SEARCH PAGE \\
 

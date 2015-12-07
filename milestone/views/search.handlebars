@@ -13,9 +13,18 @@
 
   <div class="input-wrapper clear">
 		<form action="/search" method="post">
-			# <input class="text-field" type="text" name="query" placeholder="">
+			# <input class="text-field" type="text" name="query" placeholder="Search">
 			  <input type="submit" value="Search">
-				<input type="submit" value="Save">
+		</form>
+	</div>
+
+	<div>
+		<form class="user-form" action="/search" method="post">
+  		<input type="hidden" name="_id" value="{{user._id}}">
+  		<p>
+    		# <input type="text-field" name="query" placeholder="Search & Save">
+    		<input type="submit" value = "Save">
+  		</p>
 		</form>
 	</div>
 </div>
