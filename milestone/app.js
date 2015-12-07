@@ -140,9 +140,7 @@ app.get("/savedSearches", function(req, res){
   if (req.session.userId) {
     //Find user
     Users.find(req.session.userId, function(document) {
-      if (!document) return res.redirect('/', {
-        Username: name
-      })
+      if (!document) return res.redirect('/')
       //Render the update view
       res.render('savedSearches', {
         user: document,
@@ -150,54 +148,28 @@ app.get("/savedSearches", function(req, res){
       })
     })
   } else {
-    res.redirect('/savedSearches', {
-      Username: name
-    })
+    res.redirect('/savedSearches')
   }
-
-  // res.render('savedSearches', {
-  //   Username: name
-  // })
 });
 
 app.post('/savedSearches/add', function(req, res) {
   var savedSearch = req.body.query
   var userId = req.session.userId
-  //Add the tag to the user
-  Users.addSavedSearch(userId, savedSearch, function() {
-    var options = {
-      url: 'https://api.instagram.com/v1/tags/' + savedSearch + '/media/recent?access_token=' + req.session.access_token + '&count=9'
+  var user;
 
-    }
-    console.log(options.url)
-
-    request.get(options, function(error, response, body) {
-
-      if (error) {
-        console.log("error if 1")
-        return next(error)
-      }
-      try {
-        var feed = JSON.parse(body)
-      } catch (err) {
-        console.log("error if 2")
-          // return error if what we get back is HTML code
-        return next(err) // displays the error on the page
-          // return res.reditect('/') // just redirects to homepage
-      }
-
-      if (feed.meta.code > 200) {
-        console.log("error code above 200")
-        return next(feed.meta.error_message)
-      }
-
-      res.render('/search', {
-        title: 'Search',
-        feed: feed.data,
-        Username: name
-      })
-    })
+  Users.find(req.session.userId, function(document) {
+    if (!document)
+      return res.redirect('/')
+    user = document
   })
+
+  if($.inArray(value, user.savedSearches))
+    res.redirect('/search')
+  else
+    //Add the tag to the user
+    Users.addSavedSearch(userId, savedSearch, function() {
+      res.redirect('/search')
+    })
 })
 
 app.post('/savedSearches/remove', function(req, res) {
@@ -205,9 +177,7 @@ app.post('/savedSearches/remove', function(req, res) {
   var userId = req.session.userId
   //Add the tag to the user
   Users.removeSavedSearch(userId, savedSearch, function() {
-    res.redirect('/savedSearches', {
-      Username: name
-    })
+    res.redirect('/savedSearches')
   })
 })
 

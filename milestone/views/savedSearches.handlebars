@@ -10,7 +10,7 @@
         {{#each user.savedSearches}}
         <div class = "jr-btn-3">
           <form action="/savedSearches/remove" method="post">
-            <a href = "#"<strong>#{{this}}</strong></a>
+            <a href = "/search"<strong>#{{this}}</strong></a>
             <input type="hidden" name="savedSearch" value="{{this}}">
             <button type="submit">Delete</button>
           </form>
