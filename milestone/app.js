@@ -73,6 +73,11 @@ app.get('/auth/finalize', function(req, res, next){
       return next(err)
     }
 
+    var user = data
+    Users.insert(user, function(result) {
+      req.session.userId = result.ops[0]._id
+    })
+
     name = data.user.full_name
     req.session.access_token = data.access_token
     res.redirect('/dashboard')
@@ -127,7 +132,7 @@ app.get("/savedSearches", function(req, res){
   if (req.session.userId) {
     //Find user
     Users.find(req.session.userId, function(document) {
-      if (!document) return res.redirect('/search', {
+      if (!document) return res.redirect('/savedSearches', {
         Username: name
       })
       //Render the update view
@@ -137,7 +142,7 @@ app.get("/savedSearches", function(req, res){
       })
     })
   } else {
-    res.redirect('/search', {
+    res.redirect('/savedSearches', {
       Username: name
     })
   }
@@ -148,35 +153,35 @@ app.get("/savedSearches", function(req, res){
 });
 
 app.post('/savedSearches/add', function(req, res) {
-  var savedSearch = req.body.savedSearch
+  var savedSearch = req.body.query
   var userId = req.session.userId
   //Add the tag to the user
   Users.addSavedSearch(userId, savedSearch, function() {
-    res.redirect('/savedSearches')
+    res.redirect('/search')
   })
 })
 
-app.post('/savedSearchess/remove', function(req, res) {
-  var savedSearch = req.body.savedSearch
+app.post('/savedSearches/remove', function(req, res) {
+  var savedSearch = req.body.query
   var userId = req.session.userId
   //Add the tag to the user
   Users.removeSavedSearch(userId, savedSearch, function() {
-    res.redirect('/savedSearches', {
+    res.redirect('/search', {
       Username: name
     })
   })
 })
 
-// db.connect('mongodb://dbuser:password@ds055574.mongolab.com:55574/testing', function(err) {
-//   if (err) {
-//     console.log('Unable to connect to Mongo.')
-//     process.exit(1)
-//   } else {
-//     app.listen(3000, function() {
-//       console.log('Listening on port 3000...')
-//     })
-//   }
-// })
+db.connect('mongodb://bowles123:password@ds051943.mongolab.com:51943/testing', function(err) {
+  if (err) {
+    console.log('Unable to connect to Mongo.')
+    process.exit(1)
+  } else {
+    app.listen(3000, function() {
+      console.log('Listening on port 3000...')
+    })
+  }
+})
 
 // SEARCH PAGE \\
 
@@ -263,5 +268,3 @@ app.use(function(err, req, res, next) {
   })
 })
 // SEARCH PAGE END \\
-
-app.listen(PORT);

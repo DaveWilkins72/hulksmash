@@ -8,7 +8,7 @@
 
       {{#if user.savedSearches}}
         {{#each user.savedSearches}}
-          <form action="/savedSearches/remove" method="post">
+          <form action="/savedSearches" method="post">
             {{this}}
             <input type="hidden" name="savedSearch" value="{{this}}">
             <button type="submit">Delete</button>
