@@ -6,9 +6,8 @@ var querystring = require('querystring')
 var cfg = require('./config')
 var session = require('express-session')
 var bodyParser = require('body-parser')
-var MongoClient = require('mongodb').MongoClient
 var db = require('./db')
-var Users = require('./db')
+var Users = require('./models/users')
 var name;
 var router = express.Router();
 var SEARCH_QUERY = ''
@@ -124,12 +123,20 @@ app.get("/profile", function(req, res, next){
 
 });
 
-app.get("/savedSearch", function(req, res){
-  res.render('savedSearch', {
+app.get("/savedSearches", function(req, res){
+  res.render('savedSearches', {
     Username: name
   })
 });
 
+app.post('/savedSearches/add', function(req, res) {
+  var savedSearch = req.body.savedSearch
+  var userId = req.session.userId
+  //Add the tag to the user
+  Users.addTag(userId, savedSearch, function() {
+    res.redirect('/savedSearches')
+  })
+})
 
 // SEARCH PAGE \\
 

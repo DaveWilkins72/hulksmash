@@ -5,7 +5,29 @@
 <div class="jr-wrap">
   <div class="jr-content">
     <div class= "jr-squeeze">
-      <div class="jr-btn-3">
+
+      <form class="user-form" action="/savedSearches/add" method="post">
+        <input type="hidden" name="_id" value="{{user._id}}">
+        <p>
+          <input type="text" name="savedSearch" value="" placeholder="savedSearch Name">
+        </p>
+        <p>
+          <button type="submit">Submit</button>
+        </p>
+      </form>
+
+      {{#if user.savedSearches}}
+        <h2>Saved Searches</h2>
+        {{#each user.savedSearches}}
+          <form action="/savedSearches/remove" method="post">
+            {{this}}
+            <input type="hidden" name="savedSearch" value="{{this}}">
+            <button type="submit">Delete</button>
+          </form>
+        {{/each}}
+      {{/if}}
+
+      <!-- <div class="jr-btn-3">
         <a href = "#"<strong>#fishing</strong></a>
       </div>
       <div class="jr-btn-3">
@@ -25,7 +47,8 @@
       </div>
       <div class="jr-btn-3">
         <a href = "#"<strong>#Pizza</strong></a>
-      </div>
+      </div> -->
+
       <p><br/>&nbsp;</p>
       <p><br/>&nbsp;</p>
     </div>
