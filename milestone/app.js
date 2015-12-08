@@ -155,26 +155,28 @@ app.get("/savedSearches", function(req, res){
 app.post('/savedSearches/add', function(req, res) {
   var savedSearch = req.body.query
   var userId = req.session.userId
-  var user;
 
-  Users.find(req.session.userId, function(document) {
-    if (!document)
-      return res.redirect('/')
-    user = document
-  })
-
-  if($.inArray(value, user.savedSearches))
-    res.redirect('/search')
-  else
     //Add the tag to the user
     Users.addSavedSearch(userId, savedSearch, function() {
+      // Users.find(req.session.userId, function(document) {
+      //   if (!document)
+      //     return res.redirect('/')
+      //   var user = document
+      // })
+
+      // if($.inArray(savedSearch, user.savedSearches)) {
+      //   console.log('Already in the saved search array.')
+      //   res.redirect('/search')
+      // }
+      //else
       res.redirect('/search')
     })
 })
 
 app.post('/savedSearches/remove', function(req, res) {
-  var savedSearch = req.body.query
+  var savedSearch = req.body.savedSearch
   var userId = req.session.userId
+
   //Add the tag to the user
   Users.removeSavedSearch(userId, savedSearch, function() {
     res.redirect('/savedSearches')

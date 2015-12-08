@@ -16,6 +16,17 @@
 			  <input type="submit" value="Search">
 		</form>
 	</div>
+	<div>
+		<form action="/savedSearches/add"  method="post">
+			# <input type = "text" name = "query" placeholder = "">
+			<input type="hidden" name="_id" value="{{user._id}}">
+			<button type="submit" name="save">Save Search</button>
+		</form>
+	</div>
+	<div class="">
+		<!-- <form class="user-form" action="savedSearches/add" method="post">
+		</form> -->
+	</div>
 
 </div>
         <div class="jr-wrap">

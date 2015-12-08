@@ -64,19 +64,8 @@ exports.removeSavedSearch = function(userId, savedSearch, callback) {
     function(err, result) {
       assert.equal(err, null)
       assert.equal(1, result.result.n)
-      console.log('Removed 1 savedSearch to a document in the users collection')
+      console.log('Removed 1 savedSearch from a user document in the users collection')
       callback()
     }
   )
-}
-
-exports.findSavedSearch = function(userId, savedSearch, callback) {
-  // Get the users collection
-  var collection = db.get().collection('users')
-  // Find a user and all their saved searches.
-  collection.findOne({'_id': userId}, function(err, document) {
-    assert.equal(err, null)
-    console.log('Found savedSearch for user document')
-    callback(document)
-  })
 }
