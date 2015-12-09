@@ -169,7 +169,7 @@ app.post('/savedSearches/add', function(req, res) {
       //   res.redirect('/search')
       // }
       //else
-      res.redirect('/search')
+      res.redirect('/savedSearches')
     })
 })
 

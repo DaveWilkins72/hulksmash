@@ -374,6 +374,10 @@ div a{
   margin:1% auto;
 }
 
+.inline-form {
+  display: inline;
+}
+
 fieldset {
     border: 0px solid;
     padding: 0px 23% 0px 0px;
