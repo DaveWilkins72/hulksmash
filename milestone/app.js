@@ -78,6 +78,8 @@ app.get('/auth/finalize', function(req, res, next){
     name = data.user.full_name
     req.session.access_token = data.access_token
     req.session.userId = data.user.id
+    req.session.username = data.user.username
+    req.session.bio = data.user.bio
     user._id = user.id
     delete user.id
     Users.find(user._id, function(document) {
@@ -136,6 +138,20 @@ app.get("/profile", function(req, res, next){
 
 });
 
+app.post("/profile/update", function(req, res) {
+  var username = req.body.username
+  var biography = req.body.biography
+
+  if(username === '')
+    username = req.session.username
+  if(biography === '')
+    biography = req.session.bio
+
+  Users.update(username, biography, function() {
+    res.redirect('/profile')
+  })
+})
+
 app.get("/savedSearches", function(req, res){
   if (req.session.userId) {
     //Find user
@@ -158,17 +174,6 @@ app.post('/savedSearches/add', function(req, res) {
 
     //Add the tag to the user
     Users.addSavedSearch(userId, savedSearch, function() {
-      // Users.find(req.session.userId, function(document) {
-      //   if (!document)
-      //     return res.redirect('/')
-      //   var user = document
-      // })
-
-      // if($.inArray(savedSearch, user.savedSearches)) {
-      //   console.log('Already in the saved search array.')
-      //   res.redirect('/search')
-      // }
-      //else
       res.redirect('/savedSearches')
     })
 })

@@ -8,27 +8,30 @@
   <h1>{{this.user.username}}</h1>
 </div>
 {{/each}}
-<form  name="SM-myForm" class="SM-form" onsubmit="return validateForm()" method="post" action="dashboard.html">
-    <fieldset>
-        <div class="SM-div">
-            <label for="name"><b class="SM-bold">*Username:</b></label>
-            <input class="SM-info" name="SM-mForm" type="text" placeholder="Username">
+<div class = "bb-div">
+      <div>
+        <img src="{{feed.profile_picture}}" alt="" height = "250px" width = "250px"/>
+      </div>
+
+        <div class="" margin-bottom="10%">
+          <h3>Username:     {{feed.username}}</h3>
         </div>
 
-        <div class="SM-div">
-            <label for="email"><b class="SM-bold">*Email Address:</b></label>
-            <input class="SM-info" name="SM-mForm" type="text" placeholder="Email Address">
+        <div class="">
+          <h3>Bio:     {{feed.bio}}</h3>
         </div>
 
-        <div class="SM-div">
-            <label for="bio"><b class="SM-bold">*Bio:</b></label>
-            <input class="SM-bio" name="SM-mForm" type="text" placeholder="Bio">
-        </div>
+        <form class="" action="/profile/update" method="post">
+          <div>
+            <input type="text" name="username" value="" placeholder = "Update Username">
+          </div>
 
-        <div class="SM-div">
-          <a href="dashboard.html">
-            <button type="submit" class="SM-controls"><b class="SM-bold">Submit</b></button>
-          </a>
-        </div>
-    </fieldset>
-</form>
+          <div class="">
+            <input type="text" name="biography" value="" placeholder = "Update User Bio">
+          </div>
+
+          <div class="">
+            <button type="submit" name="update">Update</button>
+          </div>
+        </form>
+</div>

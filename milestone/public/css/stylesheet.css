@@ -355,6 +355,11 @@ div a{
 /*------------------------------------*\
 -         Morty's CSS
 \*------------------------------------*/
+.bb-div {
+  padding: 45%;
+  padding-top: 5%;
+}
+
 .SM-profileImage {
   position: relative;
   width: 360px;
