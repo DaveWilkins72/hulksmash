@@ -143,7 +143,7 @@ app.post("/profile", function(req, res) {
         user.biography = document.bio
       }
       else {
-        data.biography = user.biography
+        data.bio = user.biography
       }
 
       if(user.username == '') {
@@ -151,6 +151,21 @@ app.post("/profile", function(req, res) {
       }
       else {
         data.username = user.username
+      }
+      if(user.fullName == '') {
+        user.fullName = document.full_name
+      }
+      else {
+        data.full_name = user.fullName
+      }
+
+      name = user.fullName
+
+      if(user.website == '') {
+        user.website == document.websiste
+      }
+      else {
+        data.website = user.website
       }
 
       Users.update(data, function() {

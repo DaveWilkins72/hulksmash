@@ -13,26 +13,42 @@
         <img src="{{userInfo.profile_picture}}" alt="" height = "250px" width = "250px"/>
       </div>
 
-        <div class="" margin-bottom="10%">
+        <p class="" margin-bottom="10%">
           <h3>Username: {{userInfo.username}}</h3>
-        </div>
+        </p>
 
-        <div class="">
+        <p>
+
+        </p>
+
+        <p class="">
           <h3>Bio: {{userInfo.biography}}</h3>
-        </div>
+        </p>
+
+        <p>
+          <h3>Website: {{userInfo.website}}</h3>
+        </p>
 
         <form class="" action="/profile" method="post">
           <input type="hidden" name="_id" value="{{userInfo._id}}">
-          <div>
+          <p>
             <input type="text" name="username" value="" placeholder = "Update Username">
-          </div>
+          </p>
 
-          <div class="">
+          <p class="">
             <input type="text" name="biography" value="" placeholder = "Update User Bio">
-          </div>
+          </p>
 
-          <div class="">
+          <p>
+            <input type="text" name="fullName" value="" placeholder = "Update Full Name">
+          </p>
+
+          <p>
+            <input type="text" name="website" value="" placeholder = "Update Website">
+          </p>
+
+          <p class="">
             <button type="submit">Update</button>
-          </div>
+          </p>
         </form>
 </div>
