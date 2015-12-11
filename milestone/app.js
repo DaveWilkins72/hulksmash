@@ -78,16 +78,16 @@ app.get('/auth/finalize', function(req, res, next){
     name = data.user.full_name
     req.session.access_token = data.access_token
     req.session.userId = data.user.id
-    req.session.username = data.user.username
-    req.session.bio = data.user.bio
     user._id = user.id
     delete user.id
+
     Users.find(user._id, function(document) {
       if(!document) {
         Users.insert(user, function(result) {
           res.redirect('/dashboard')
         })
       } else {
+
         res.redirect('/dashboard')
       }
     })
@@ -116,39 +116,49 @@ app.get("/dashboard", function(req, res, next){
   })
 });
 
-app.get("/profile", function(req, res, next){
-  var options = {
-    url: 'https://api.instagram.com/v1/users/self?access_token=' + req.session.access_token
-  }
-    request.get(options, function(error, response, body){
-    try {
-      var feed = JSON.parse(body)
-      if (feed.meta.code > 200) {
-        return next(feed.meta.error_message)
-      }
-    }
-    catch(err) {
-      return next(err)
-    }
-    res.render('profile', {
-      feed: feed.data,
-      Username: name
+app.get('/profile', function(req, res) {
+  if (req.session.userId) {
+    //Find user
+    Users.find(req.session.userId, function(document) {
+      if (!document) return res.redirect('/')
+      res.render('profile', {
+        userInfo: document,
+        Username: name
+      })
     })
-  })
+  } else {
+    res.redirect('/')
+  }
+})
 
-});
+app.post("/profile", function(req, res) {
+  var user = req.body
+  var data;
 
-app.post("/profile/update", function(req, res) {
-  var username = req.body.username
-  var biography = req.body.biography
+  Users.find(req.session.userId, function(document) {
+    if(!document) return res.rediret('/')
+    data = document
 
-  if(username === '')
-    username = req.session.username
-  if(biography === '')
-    biography = req.session.bio
+      if(user.biography == '') {
+        user.biography = document.bio
+      }
+      else {
+        data.biography = user.biography
+      }
 
-  Users.update(username, biography, function() {
-    res.redirect('/profile')
+      if(user.username == '') {
+        user.username = document.username
+      }
+      else {
+        data.username = user.username
+      }
+
+      Users.update(data, function() {
+        res.render('profile', {
+          userInfo: data,
+          Username: name
+        })
+      })
   })
 })
 

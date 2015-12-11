@@ -1,7 +1,7 @@
 <div id="title">
   <img src="images/profile.png">
 </div>
-{{#each feed}}
+{{#each userInfo}}
 <div class="SM-profileImage"><img src="{{user.profile_picture}}" alt=""> </div>
 
 <div class="SM-userName">
@@ -10,18 +10,19 @@
 {{/each}}
 <div class = "bb-div">
       <div>
-        <img src="{{feed.profile_picture}}" alt="" height = "250px" width = "250px"/>
+        <img src="{{userInfo.profile_picture}}" alt="" height = "250px" width = "250px"/>
       </div>
 
         <div class="" margin-bottom="10%">
-          <h3>Username:     {{feed.username}}</h3>
+          <h3>Username: {{userInfo.username}}</h3>
         </div>
 
         <div class="">
-          <h3>Bio:     {{feed.bio}}</h3>
+          <h3>Bio: {{userInfo.biography}}</h3>
         </div>
 
-        <form class="" action="/profile/update" method="post">
+        <form class="" action="/profile" method="post">
+          <input type="hidden" name="_id" value="{{userInfo._id}}">
           <div>
             <input type="text" name="username" value="" placeholder = "Update Username">
           </div>
@@ -31,7 +32,7 @@
           </div>
 
           <div class="">
-            <button type="submit" name="update">Update</button>
+            <button type="submit">Update</button>
           </div>
         </form>
 </div>
