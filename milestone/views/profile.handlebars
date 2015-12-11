@@ -8,47 +8,42 @@
   <h1>{{this.user.username}}</h1>
 </div>
 {{/each}}
-<div class = "bb-div">
-      <div>
-        <img src="{{userInfo.profile_picture}}" alt="" height = "250px" width = "250px"/>
-      </div>
 
-        <p class="" margin-bottom="10%">
-          <h3>Username: {{userInfo.username}}</h3>
-        </p>
+<div class = "SM-form">
+  <img src="{{userInfo.profile_picture}}" alt="images/profileButton2.png" height = "250px" width = "250px"/>
 
-        <p>
+  <form class="" action="/profile" method="post">
+    <input type="hidden" name="_id" value="{{userInfo._id}}">
+    <p>
+      <input type="text" name="username" value="" placeholder = "Update Username">
+    </p>
 
-        </p>
+    <p>
+      <input type="text" name="fullName" value="" placeholder = "Update Full Name">
+    </p>
 
-        <p class="">
-          <h3>Bio: {{userInfo.bio}}</h3>
-        </p>
+    <p>
+      <input type="text" name="website" value="" placeholder = "Update Website">
+    </p>
 
-        <p>
-          <h3>Website: {{userInfo.website}}</h3>
-        </p>
+    <p class="">
+      <input class = "SM-bio" type="text" name="biography" value="" placeholder = "Update User Bio">
+    </p>
 
-        <form class="" action="/profile" method="post">
-          <input type="hidden" name="_id" value="{{userInfo._id}}">
-          <p>
-            <input type="text" name="username" value="" placeholder = "Update Username">
-          </p>
+    <p class="">
+      <button type="submit">Update</button>
+    </p>
+  </form>
 
-          <p class="">
-            <input type="text" name="biography" value="" placeholder = "Update User Bio">
-          </p>
+  <p class="SM-form">
+    <h3>Username: {{userInfo.username}}</h3>
+  </p>
 
-          <p>
-            <input type="text" name="fullName" value="" placeholder = "Update Full Name">
-          </p>
+  <p class="SM-form">
+    <h3>Bio: {{userInfo.bio}}</h3>
+  </p>
 
-          <p>
-            <input type="text" name="website" value="" placeholder = "Update Website">
-          </p>
-
-          <p class="">
-            <button type="submit">Update</button>
-          </p>
-        </form>
+  <p class = "SM-form">
+    <h3>Website: <a href = "http://{{userInfo.website}}"> {{userInfo.website}} </a> </h3>
+  </p>
 </div>

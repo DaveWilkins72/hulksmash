@@ -141,6 +141,11 @@ app.post("/profile", function(req, res) {
 
     data.bio = user.biography
     data.website = user.website
+    var substring = "http://"
+
+    if(data.website.indexOf(substring) > -1) {
+      data.website = data.website.replace(substring, "")
+    }
 
     if(user.username == '') {
       user.username = document.username
