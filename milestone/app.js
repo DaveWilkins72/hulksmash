@@ -87,7 +87,7 @@ app.get('/auth/finalize', function(req, res, next){
           res.redirect('/dashboard')
         })
       } else {
-
+        name = document.full_name
         res.redirect('/dashboard')
       }
     })
@@ -139,41 +139,29 @@ app.post("/profile", function(req, res) {
     if(!document) return res.rediret('/')
     data = document
 
-      if(user.biography == '') {
-        user.biography = document.bio
-      }
-      else {
-        data.bio = user.biography
-      }
+    data.bio = user.biography
+    data.website = user.website
 
-      if(user.username == '') {
-        user.username = document.username
-      }
-      else {
-        data.username = user.username
-      }
-      if(user.fullName == '') {
-        user.fullName = document.full_name
-      }
-      else {
-        data.full_name = user.fullName
-      }
+    if(user.username == '') {
+      user.username = document.username
+    }
+    else {
+      data.username = user.username
+    }
+    if(user.fullName == '') {
+      user.fullName = document.full_name
+    }
+    else {
+      data.full_name = user.fullName
+    }
+    name = user.fullName
 
-      name = user.fullName
-
-      if(user.website == '') {
-        user.website == document.websiste
-      }
-      else {
-        data.website = user.website
-      }
-
-      Users.update(data, function() {
-        res.render('profile', {
-          userInfo: data,
-          Username: name
-        })
+    Users.update(data, function() {
+      res.render('profile', {
+        userInfo: data,
+        Username: name
       })
+    })
   })
 })
 
